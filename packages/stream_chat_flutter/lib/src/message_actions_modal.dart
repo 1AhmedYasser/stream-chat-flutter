@@ -156,12 +156,7 @@ class _MessageActionsModalState extends State<MessageActionsModal> {
                   ),
                 ),
               const SizedBox(height: 8),
-              GestureDetector(
-                onTap: () {
-                  print("hi");
-                },
-                child: widget.messageWidget,
-              ),
+              widget.messageWidget,
               // IgnorePointer(
               //   child: widget.messageWidget,
               // ),
