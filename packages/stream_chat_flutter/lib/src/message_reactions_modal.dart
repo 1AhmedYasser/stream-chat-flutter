@@ -94,9 +94,15 @@ class MessageReactionsModal extends StatelessWidget {
                   ),
                 ),
               const SizedBox(height: 8),
-              IgnorePointer(
+              GestureDetector(
+                onTap: () {
+                  print("heelo");
+                },
                 child: messageWidget,
               ),
+              // IgnorePointer(
+              //   child: messageWidget,
+              // ),
               if (message.latestReactions?.isNotEmpty == true) ...[
                 const SizedBox(height: 8),
                 _buildReactionCard(

@@ -10,7 +10,7 @@ void main() async {
   /// Create a new instance of [StreamChatClient] passing the apikey obtained
   /// from your project dashboard.
   final client = StreamChatClient(
-    's2dxdhpxd94g',
+    'tv3c4tjhs5kw',
     logLevel: Level.INFO,
   );
 
@@ -21,11 +21,11 @@ void main() async {
   /// Please see the following for more information:
   /// https://getstream.io/chat/docs/ios_user_setup_and_tokens/
   await client.connectUser(
-    User(id: 'super-band-9'),
+    User(id: '4'),
     '''eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoic3VwZXItYmFuZC05In0.0L6lGoeLwkz0aZRUcpZKsvaXtNEDHBcezVTZ0oPq40A''',
   );
 
-  final channel = client.channel('messaging', id: 'godevs');
+  final channel = client.channel('messaging', id: '!members-cymENk6npeJD7gPFr4L5sEK-lYx_lvs0X7LKEc0FgTk');
 
   await channel.watch();
 
