@@ -127,10 +127,14 @@ class ImageGroup extends StatelessWidget {
 
     final channel = StreamChannel.of(context).channel;
 
-    final res = await Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => StreamChannel(
+    final res = await Navigator.of(context).push(
+      PageRouteBuilder(
+        pageBuilder: (
+          BuildContext context,
+          _,
+          __,
+        ) =>
+            StreamChannel(
           channel: channel,
           child: FullScreenMedia(
             mediaAttachments: images,
@@ -139,6 +143,16 @@ class ImageGroup extends StatelessWidget {
             message: message,
             onShowMessage: onShowMessage,
           ),
+        ),
+        transitionsBuilder: (
+          _,
+          Animation<double> animation,
+          __,
+          Widget child,
+        ) =>
+            FadeTransition(
+          opacity: animation,
+          child: child,
         ),
       ),
     );
