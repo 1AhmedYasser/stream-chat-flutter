@@ -621,6 +621,8 @@ class _MessageWidgetState extends State<MessageWidget>
           : null,
       child: Portal(
         child: InkWell(
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
           onTap: () {
             widget.onMessageTap!(widget.message);
           },
