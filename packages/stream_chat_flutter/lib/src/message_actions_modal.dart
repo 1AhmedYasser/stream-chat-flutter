@@ -156,7 +156,7 @@ class _MessageActionsModalState extends State<MessageActionsModal> {
                   ),
                 ),
               const SizedBox(height: 8),
-              InkWell(
+              GestureDetector(
                 onTap: () {
                   print("hi");
                 },
