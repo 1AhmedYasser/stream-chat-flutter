@@ -94,9 +94,10 @@ class MessageReactionsModal extends StatelessWidget {
                   ),
                 ),
               const SizedBox(height: 8),
-              IgnorePointer(
-                child: messageWidget,
-              ),
+              messageWidget,
+              // IgnorePointer(
+              //   child: messageWidget,
+              // ),
               if (message.latestReactions?.isNotEmpty == true) ...[
                 const SizedBox(height: 8),
                 _buildReactionCard(
