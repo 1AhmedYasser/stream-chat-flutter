@@ -132,13 +132,10 @@ class ImageAttachment extends AttachmentWidget {
                   GestureDetector(
                     onTap: onAttachmentTap ??
                         () async {
-                          final result = await Navigator.of(context).push(
-                            PageRouteBuilder(
-                              pageBuilder: (
-                                BuildContext context,
-                                _,
-                                __,
-                              ) {
+                          final result = await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) {
                                 final channel =
                                     StreamChannel.of(context).channel;
                                 return StreamChannel(
@@ -153,18 +150,41 @@ class ImageAttachment extends AttachmentWidget {
                                   ),
                                 );
                               },
-                              transitionsBuilder: (
-                                _,
-                                Animation<double> animation,
-                                __,
-                                Widget child,
-                              ) =>
-                                  FadeTransition(
-                                opacity: animation,
-                                child: child,
-                              ),
                             ),
                           );
+                          // final result = await Navigator.of(context).push(
+                          //   PageRouteBuilder(
+                          //     pageBuilder: (
+                          //         BuildContext context,
+                          //         _,
+                          //         __,
+                          //         ) {
+                          //       final channel =
+                          //           StreamChannel.of(context).channel;
+                          //       return StreamChannel(
+                          //         channel: channel,
+                          //         child: FullScreenMedia(
+                          //           mediaAttachments: message.attachments,
+                          //           startIndex:
+                          //           message.attachments.indexOf(attachment),
+                          //           userName: message.user?.name,
+                          //           message: message,
+                          //           onShowMessage: onShowMessage,
+                          //         ),
+                          //       );
+                          //     },
+                          //     transitionsBuilder: (
+                          //         _,
+                          //         Animation<double> animation,
+                          //         __,
+                          //         Widget child,
+                          //         ) =>
+                          //         FadeTransition(
+                          //           opacity: animation,
+                          //           child: child,
+                          //         ),
+                          //   ),
+                          // );
                           if (result != null) onReturnAction?.call(result);
                         },
                     child: imageWidget,
