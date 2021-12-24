@@ -152,34 +152,37 @@ class _FullScreenMediaState extends State<FullScreenMedia>
                     final imageUrl = attachment.imageUrl ??
                         attachment.assetUrl ??
                         attachment.thumbUrl;
-                    return PhotoView(
-                      loadingBuilder: (context, image) => const Offstage(),
-                      imageProvider: (imageUrl == null &&
-                              attachment.localUri != null &&
-                              attachment.file?.bytes != null)
-                          ? Image.memory(attachment.file!.bytes!).image
-                          : CachedNetworkImageProvider(imageUrl!),
-                      maxScale: PhotoViewComputedScale.covered,
-                      minScale: PhotoViewComputedScale.contained,
-                      heroAttributes: PhotoViewHeroAttributes(
-                        tag: widget.mediaAttachments,
+                    return Hero(
+                      tag: 'chat_image',
+                      child: PhotoView(
+                        loadingBuilder: (context, image) => const Offstage(),
+                        imageProvider: (imageUrl == null &&
+                                attachment.localUri != null &&
+                                attachment.file?.bytes != null)
+                            ? Image.memory(attachment.file!.bytes!).image
+                            : CachedNetworkImageProvider(imageUrl!),
+                        maxScale: PhotoViewComputedScale.covered,
+                        minScale: PhotoViewComputedScale.contained,
+                        heroAttributes: PhotoViewHeroAttributes(
+                          tag: widget.mediaAttachments,
+                        ),
+                        backgroundDecoration: BoxDecoration(
+                          color: ColorTween(
+                            begin: ChannelHeaderTheme.of(context).color,
+                            end: Colors.black,
+                          ).lerp(_controller.value),
+                        ),
+                        onTapUp: (a, b, c) {
+                          setState(() {
+                            _optionsShown = !_optionsShown;
+                          });
+                          if (_controller.isCompleted) {
+                            _controller.reverse();
+                          } else {
+                            _controller.forward();
+                          }
+                        },
                       ),
-                      backgroundDecoration: BoxDecoration(
-                        color: ColorTween(
-                          begin: ChannelHeaderTheme.of(context).color,
-                          end: Colors.black,
-                        ).lerp(_controller.value),
-                      ),
-                      onTapUp: (a, b, c) {
-                        setState(() {
-                          _optionsShown = !_optionsShown;
-                        });
-                        if (_controller.isCompleted) {
-                          _controller.reverse();
-                        } else {
-                          _controller.forward();
-                        }
-                      },
                     );
                   } else if (attachment.type == 'video') {
                     final controller = videoPackages[attachment.id]!;
