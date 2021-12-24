@@ -132,26 +132,6 @@ class ImageAttachment extends AttachmentWidget {
                   GestureDetector(
                     onTap: onAttachmentTap ??
                         () async {
-                          // final result = await Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (_) {
-                          //       final channel =
-                          //           StreamChannel.of(context).channel;
-                          //       return StreamChannel(
-                          //         channel: channel,
-                          //         child: FullScreenMedia(
-                          //           mediaAttachments: message.attachments,
-                          //           startIndex:
-                          //               message.attachments.indexOf(attachment),
-                          //           userName: message.user?.name,
-                          //           message: message,
-                          //           onShowMessage: onShowMessage,
-                          //         ),
-                          //       );
-                          //     },
-                          //   ),
-                          // );
                           final result = await Navigator.of(context).push(
                             PageRouteBuilder(pageBuilder: (
                               BuildContext context,
@@ -181,14 +161,7 @@ class ImageAttachment extends AttachmentWidget {
                                 opacity: animation,
                                 child: StreamChannel(
                                   channel: channel,
-                                  child: FullScreenMedia(
-                                    mediaAttachments: message.attachments,
-                                    startIndex:
-                                    message.attachments.indexOf(attachment),
-                                    userName: message.user?.name,
-                                    message: message,
-                                    onShowMessage: onShowMessage,
-                                  ),
+                                  child: child,
                                 ),
                               );
                             },),
