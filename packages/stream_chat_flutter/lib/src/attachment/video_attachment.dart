@@ -81,35 +81,41 @@ class VideoAttachment extends AttachmentWidget {
                 onTap: onAttachmentTap ??
                     () async {
                       final res = await Navigator.of(context).push(
-                        PageRouteBuilder(pageBuilder: (
+                        PageRouteBuilder(
+                          pageBuilder: (
                             BuildContext context,
                             _,
                             __,
-                            ) {
-                          final channel = StreamChannel.of(context).channel;
-                          return StreamChannel(
-                            channel: channel,
-                            child: FullScreenMedia(
-                              mediaAttachments: message.attachments,
-                              startIndex:
-                              message.attachments.indexOf(attachment),
-                              userName: message.user?.name,
-                              message: message,
-                              onShowMessage: onShowMessage,
-                            ),
-                          );
-                        }, transitionsBuilder: (
+                          ) {
+                            final channel = StreamChannel.of(context).channel;
+                            return StreamChannel(
+                              channel: channel,
+                              child: FullScreenMedia(
+                                mediaAttachments: message.attachments,
+                                startIndex:
+                                    message.attachments.indexOf(attachment),
+                                userName: message.user?.name,
+                                message: message,
+                                onShowMessage: onShowMessage,
+                              ),
+                            );
+                          },
+                          transitionsBuilder: (
                             _,
                             Animation<double> animation,
                             __,
                             Widget child,
-                            ) {
-                          final channel = StreamChannel.of(context).channel;
-                          return FadeTransition(
-                            opacity: animation,
-                            child: child,
-                          );
-                        },),
+                          ) {
+                            final channel = StreamChannel.of(context).channel;
+                            return FadeTransition(
+                              opacity: animation,
+                              child: StreamChannel(
+                                channel: channel,
+                                child: child,
+                              ),
+                            );
+                          },
+                        ),
                       );
                       if (res != null) onReturnAction?.call(res);
                     },
