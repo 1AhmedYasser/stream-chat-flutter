@@ -153,7 +153,7 @@ class _FullScreenMediaState extends State<FullScreenMedia>
                         attachment.assetUrl ??
                         attachment.thumbUrl;
                     return Hero(
-                      tag: 's',
+                      tag: 'chat_image',
                       child: PhotoView(
                         loadingBuilder: (context, image) => const Offstage(),
                         imageProvider: (imageUrl == null &&

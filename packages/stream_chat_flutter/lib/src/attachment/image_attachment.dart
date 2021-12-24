@@ -51,14 +51,17 @@ class ImageAttachment extends AttachmentWidget {
           }
           return _buildImageAttachment(
             context,
-            Image.memory(
-              attachment.file!.bytes!,
-              height: size?.height,
-              width: size?.width,
-              fit: BoxFit.cover,
-              errorBuilder: (context, _, __) => Image.asset(
-                'images/placeholder.png',
-                package: 'stream_chat_flutter',
+            Hero(
+              tag: 'n',
+              child: Image.memory(
+                attachment.file!.bytes!,
+                height: size?.height,
+                width: size?.width,
+                fit: BoxFit.cover,
+                errorBuilder: (context, _, __) => Image.asset(
+                  'images/placeholder.png',
+                  package: 'stream_chat_flutter',
+                ),
               ),
             ),
           );
@@ -180,10 +183,7 @@ class ImageAttachment extends AttachmentWidget {
                           );
                           if (result != null) onReturnAction?.call(result);
                         },
-                    child: Hero(
-                      tag: 'chat_image',
-                      child: imageWidget,
-                    ),
+                    child: imageWidget,
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8),
