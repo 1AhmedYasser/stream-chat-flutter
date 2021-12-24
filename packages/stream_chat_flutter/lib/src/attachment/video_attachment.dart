@@ -107,17 +107,7 @@ class VideoAttachment extends AttachmentWidget {
                           final channel = StreamChannel.of(context).channel;
                           return FadeTransition(
                             opacity: animation,
-                            child: StreamChannel(
-                              channel: channel,
-                              child: FullScreenMedia(
-                                mediaAttachments: message.attachments,
-                                startIndex:
-                                message.attachments.indexOf(attachment),
-                                userName: message.user?.name,
-                                message: message,
-                                onShowMessage: onShowMessage,
-                              ),
-                            ),
+                            child: child,
                           );
                         },),
                       );
