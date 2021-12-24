@@ -51,17 +51,14 @@ class ImageAttachment extends AttachmentWidget {
           }
           return _buildImageAttachment(
             context,
-            Hero(
-              tag: 'n',
-              child: Image.memory(
-                attachment.file!.bytes!,
-                height: size?.height,
-                width: size?.width,
-                fit: BoxFit.cover,
-                errorBuilder: (context, _, __) => Image.asset(
-                  'images/placeholder.png',
-                  package: 'stream_chat_flutter',
-                ),
+            Image.memory(
+              attachment.file!.bytes!,
+              height: size?.height,
+              width: size?.width,
+              fit: BoxFit.cover,
+              errorBuilder: (context, _, __) => Image.asset(
+                'images/placeholder.png',
+                package: 'stream_chat_flutter',
               ),
             ),
           );
