@@ -109,7 +109,14 @@ class VideoAttachment extends AttachmentWidget {
                             opacity: animation,
                             child: StreamChannel(
                               channel: channel,
-                              child: child,
+                              child: FullScreenMedia(
+                                mediaAttachments: message.attachments,
+                                startIndex:
+                                message.attachments.indexOf(attachment),
+                                userName: message.user?.name,
+                                message: message,
+                                onShowMessage: onShowMessage,
+                              ),
                             ),
                           );
                         },),
