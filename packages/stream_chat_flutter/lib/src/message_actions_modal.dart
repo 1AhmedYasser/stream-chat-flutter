@@ -257,9 +257,10 @@ class _MessageActionsModalState extends State<MessageActionsModal> {
           padding: const EdgeInsets.symmetric(vertical: 11, horizontal: 16),
           child: Row(
             children: [
-              messageAction.leading ?? const Offstage(),
-              const SizedBox(width: 16),
+              const SizedBox(width: 10),
               messageAction.title ?? const Offstage(),
+              const Expanded(child: SizedBox()),
+              messageAction.leading ?? const Offstage(),
             ],
           ),
         ),
@@ -391,7 +392,7 @@ class _MessageActionsModalState extends State<MessageActionsModal> {
               context.translations.replyLabel,
               style: streamChatThemeData.textTheme.body,
             ),
-            const Expanded(child: SizedBox(width: 16)),
+            const Expanded(child: SizedBox()),
             StreamSvgIcon.reply(
               color: streamChatThemeData.primaryIconTheme.color,
             ),
@@ -409,13 +410,14 @@ class _MessageActionsModalState extends State<MessageActionsModal> {
         padding: const EdgeInsets.symmetric(vertical: 11, horizontal: 16),
         child: Row(
           children: [
-            StreamSvgIcon.iconFlag(
-              color: streamChatThemeData.primaryIconTheme.color,
-            ),
-            const SizedBox(width: 16),
+            const SizedBox(width: 10),
             Text(
               context.translations.flagMessageLabel,
               style: streamChatThemeData.textTheme.body,
+            ),
+            const Expanded(child: SizedBox()),
+            StreamSvgIcon.iconFlag(
+              color: streamChatThemeData.primaryIconTheme.color,
             ),
           ],
         ),
@@ -431,16 +433,17 @@ class _MessageActionsModalState extends State<MessageActionsModal> {
         padding: const EdgeInsets.symmetric(vertical: 11, horizontal: 16),
         child: Row(
           children: [
-            StreamSvgIcon.pin(
-              color: streamChatThemeData.primaryIconTheme.color,
-              size: 24,
-            ),
-            const SizedBox(width: 16),
+            const SizedBox(width: 10),
             Text(
               context.translations.togglePinUnpinText(
                 pinned: widget.message.pinned,
               ),
               style: streamChatThemeData.textTheme.body,
+            ),
+            const Expanded(child: SizedBox()),
+            StreamSvgIcon.pin(
+              color: streamChatThemeData.primaryIconTheme.color,
+              size: 24,
             ),
           ],
         ),
@@ -457,10 +460,7 @@ class _MessageActionsModalState extends State<MessageActionsModal> {
         padding: const EdgeInsets.symmetric(vertical: 11, horizontal: 16),
         child: Row(
           children: [
-            StreamSvgIcon.delete(
-              color: Colors.red,
-            ),
-            const SizedBox(width: 16),
+            const SizedBox(width: 10),
             Text(
               context.translations.toggleDeleteRetryDeleteMessageText(
                 isDeleteFailed: isDeleteFailed,
@@ -469,6 +469,10 @@ class _MessageActionsModalState extends State<MessageActionsModal> {
                   .textTheme
                   .body
                   .copyWith(color: Colors.red),
+            ),
+            const Expanded(child: SizedBox()),
+            StreamSvgIcon.delete(
+              color: Colors.red,
             ),
           ],
         ),
@@ -487,14 +491,15 @@ class _MessageActionsModalState extends State<MessageActionsModal> {
         padding: const EdgeInsets.symmetric(vertical: 11, horizontal: 16),
         child: Row(
           children: [
-            StreamSvgIcon.copy(
-              size: 24,
-              color: streamChatThemeData.primaryIconTheme.color,
-            ),
-            const SizedBox(width: 16),
+            const SizedBox(width: 10),
             Text(
               context.translations.copyMessageLabel,
               style: streamChatThemeData.textTheme.body,
+            ),
+            const Expanded(child: SizedBox()),
+            StreamSvgIcon.copy(
+              size: 24,
+              color: streamChatThemeData.primaryIconTheme.color,
             ),
           ],
         ),
@@ -513,13 +518,14 @@ class _MessageActionsModalState extends State<MessageActionsModal> {
         padding: const EdgeInsets.symmetric(vertical: 11, horizontal: 16),
         child: Row(
           children: [
-            StreamSvgIcon.edit(
-              color: streamChatThemeData.primaryIconTheme.color,
-            ),
-            const SizedBox(width: 16),
+            const SizedBox(width: 10),
             Text(
               context.translations.editMessageLabel,
               style: streamChatThemeData.textTheme.body,
+            ),
+            const Expanded(child: SizedBox()),
+            StreamSvgIcon.edit(
+              color: streamChatThemeData.primaryIconTheme.color,
             ),
           ],
         ),
