@@ -280,7 +280,7 @@ class StreamChatThemeData {
             return StreamSvgIcon.loveReaction(
               color: highlighted
                   ? theme.colorTheme.accentPrimary
-                  : theme.primaryIconTheme.color!.withOpacity(0.5),
+                  : Colors.red,
               size: size,
             );
           },
