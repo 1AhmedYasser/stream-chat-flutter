@@ -386,7 +386,7 @@ class _MessageActionsModalState extends State<MessageActionsModal> {
         padding: const EdgeInsets.symmetric(vertical: 11, horizontal: 16),
         child: Row(
           children: [
-            const SizedBox(width: 16),
+            const SizedBox(width: 10),
             Text(
               context.translations.replyLabel,
               style: streamChatThemeData.textTheme.body,
