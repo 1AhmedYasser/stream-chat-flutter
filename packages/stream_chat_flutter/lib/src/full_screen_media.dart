@@ -189,7 +189,7 @@ class _FullScreenMediaState extends State<FullScreenMedia>
                       );
                     }
                     final chewController = ChewieController(
-                      videoPlayerController: controller.videoPlayer,
+                      videoPlayerController: controller._videoPlayerController,
                       autoPlay: true,
                     );
                     return InkWell(
