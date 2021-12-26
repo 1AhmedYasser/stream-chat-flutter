@@ -183,6 +183,11 @@ class _FullScreenMediaState extends State<FullScreenMedia>
                     );
                   } else if (attachment.type == 'video') {
                     final controller = videoPackages[attachment.id]!;
+                    final chewieController = ChewieController(
+                      videoPlayerController: controller.videoPlayer,
+                      autoPlay: true,
+                      looping: true,
+                    );
                     if (!controller.initialized) {
                       return const Center(
                         child: CircularProgressIndicator(),
@@ -204,7 +209,7 @@ class _FullScreenMediaState extends State<FullScreenMedia>
                           vertical: 50,
                         ),
                         child: Chewie(
-                          controller: controller.chewieController!,
+                          controller: chewieController,
                         ),
                       ),
                     );
