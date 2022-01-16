@@ -14,10 +14,14 @@ class MessageText extends StatelessWidget {
     required this.messageTheme,
     this.onMentionTap,
     this.onLinkTap,
+    this.isSelectable = false,
   }) : super(key: key);
 
   /// Message whose text is to be displayed
   final Message message;
+
+  /// Can select and copy part of the message
+  final bool isSelectable;
 
   /// Callback for when mention is tapped
   final void Function(User)? onMentionTap;
@@ -64,7 +68,7 @@ class MessageText extends StatelessWidget {
               }
             }
           },
-          selectable: true,
+          selectable: isSelectable,
           styleSheet: MarkdownStyleSheet.fromTheme(
             themeData.copyWith(
               textTheme: themeData.textTheme.apply(

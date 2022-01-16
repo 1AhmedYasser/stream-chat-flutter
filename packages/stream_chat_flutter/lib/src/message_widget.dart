@@ -86,6 +86,7 @@ class MessageWidget extends StatefulWidget {
     this.showFlagButton = true,
     this.showPinButton = true,
     this.showPinHighlight = true,
+    this.isSelectable = false,
     this.onUserAvatarTap,
     this.onLinkTap,
     this.onMessageActions,
@@ -316,6 +317,9 @@ class MessageWidget extends StatefulWidget {
   /// The shape of the message text
   final ShapeBorder? shape;
 
+  /// Make Message Selectable
+  final bool? isSelectable;
+
   /// The shape of an attachment
   final ShapeBorder? attachmentShape;
 
@@ -476,6 +480,7 @@ class MessageWidget extends StatefulWidget {
     bool? showResendMessage,
     bool? showFlagButton,
     bool? showPinButton,
+    bool? isSelectable,
     bool? showPinHighlight,
     Map<String, AttachmentBuilder>? customAttachmentBuilders,
     bool? translateUserAvatar,
@@ -509,6 +514,7 @@ class MessageWidget extends StatefulWidget {
         attachmentBorderRadiusGeometry: attachmentBorderRadiusGeometry ??
             this.attachmentBorderRadiusGeometry,
         padding: padding ?? this.padding,
+        isSelectable: isSelectable ?? this.isSelectable,
         textPadding: textPadding ?? this.textPadding,
         attachmentPadding: attachmentPadding ?? this.attachmentPadding,
         showUserAvatar: showUserAvatar ?? this.showUserAvatar,
@@ -1085,6 +1091,7 @@ class _MessageWidgetState extends State<MessageWidget>
         child: MessageActionsModal(
           messageWidget: widget.copyWith(
             key: const Key('MessageWidget'),
+            isSelectable: true,
             message: widget.message.copyWith(
               text: (widget.message.text?.length ?? 0) > 200
                   ? '${widget.message.text!.substring(0, 200)}...'
@@ -1323,6 +1330,7 @@ class _MessageWidgetState extends State<MessageWidget>
               : MessageText(
                   onLinkTap: widget.onLinkTap,
                   message: widget.message,
+                  isSelectable: widget.isSelectable ?? false,
                   onMentionTap: widget.onMentionTap,
                   messageTheme: isOnlyEmoji
                       ? widget.messageTheme.copyWith(
