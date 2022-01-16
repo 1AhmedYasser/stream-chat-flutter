@@ -64,6 +64,7 @@ class MessageText extends StatelessWidget {
               }
             }
           },
+          selectable: true,
           styleSheet: MarkdownStyleSheet.fromTheme(
             themeData.copyWith(
               textTheme: themeData.textTheme.apply(
